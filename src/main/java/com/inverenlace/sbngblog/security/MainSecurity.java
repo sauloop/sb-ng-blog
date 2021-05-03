@@ -66,6 +66,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(resources).permitAll()
                 .antMatchers("/home", "/*.js", "/*.css", "/index.html", "/auth/**", "/api/**").permitAll()
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)

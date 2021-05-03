@@ -52,7 +52,7 @@ public class ArticleRestController {
         return ResponseEntity.ok(articleDto);
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArticleDto> saveArticleDto(@RequestBody ArticleDto articleDto) {
         ArticleDto savedArticleDto = null;
@@ -60,7 +60,7 @@ public class ArticleRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedArticleDto);
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArticleDto> updateArticleDto(@PathVariable Long id, @RequestBody ArticleDto articleDto) {
         ArticleDto updatedArticleDto = null;
@@ -68,41 +68,10 @@ public class ArticleRestController {
         return ResponseEntity.ok(updatedArticleDto);
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteArticleById(@PathVariable Long id) {
         articleService.deleteArticleById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<?> createArticle(@RequestBody ArticleDto articleDto) {
-//        articleService.saveArticle(articleDto);
-//        return new ResponseEntity(new Mensaje("artículo creado"), HttpStatus.CREATED);
-//    }
-
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @PostMapping
-//    public ResponseEntity<?> saveArticle(@RequestBody ArticleDto articleDto) {
-//        ArticleDto savedArticleDto = null;
-//        savedArticleDto = articleService.saveArticle(articleDto);
-//        return new ResponseEntity(new Mensaje(savedArticleDto.title + " creado"), HttpStatus.OK);
-//    }
-
-
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @PostMapping("/articles")
-//    public ResponseEntity<?> create(@RequestBody ArticleDto articleDto) {
-//        if (StringUtils.isBlank(articleDto.getTitle()))
-//            return new ResponseEntity(new Mensaje("el título es obligatorio"), HttpStatus.BAD_REQUEST);
-//        if (StringUtils.isBlank(articleDto.getCategory().toString()))
-//            return new ResponseEntity(new Mensaje("la categoría es obligatoria"), HttpStatus.BAD_REQUEST);
-//
-//        Article article = new Article();
-//        article.setTitle(articleDto.getTitle());
-//        article.setCategory(Category.builder().id(articleDto.getCategory()).build());
-//        articleRepository.save(article);
-//        return new ResponseEntity(new Mensaje("article creado"), HttpStatus.OK);
-//    }
 }
