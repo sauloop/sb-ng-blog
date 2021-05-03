@@ -1,7 +1,7 @@
 package com.inverenlace.sbngblog.util;
 
-//import com.inverenlace.sbngblog.security.entity.Rol;
-//import com.inverenlace.sbngblog.security.enums.RolNombre;
+import com.inverenlace.sbngblog.security.entity.Rol;
+import com.inverenlace.sbngblog.security.enums.RolNombre;
 
 import com.inverenlace.sbngblog.security.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +23,9 @@ public class CreateRoles implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-//        Rol rolAdmin = new Rol(RolNombre.ROLE_ADMIN);
-//        Rol rolUser = new Rol(RolNombre.ROLE_USER);
-//        rolService.save(rolAdmin);
-//        rolService.save(rolUser);
+        Rol rolAdmin = new Rol(RolNombre.ROLE_ADMIN);
+        Rol rolUser = new Rol(RolNombre.ROLE_USER);
+        rolService.save(rolAdmin);
+        rolService.save(rolUser);
     }
 }
