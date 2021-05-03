@@ -65,7 +65,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(resources).permitAll()
-                .antMatchers("/home", "/admin", "/*.js", "/*.css", "/index.html", "/auth/**", "/api/**").permitAll()
+                .antMatchers("/home", "/admin", "/article-list", "/category-list", "/new-article", "/new-category",
+                        "/update-article", "/update-category", "/*.js", "/*.css", "/index.html", "/auth/**", "/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
