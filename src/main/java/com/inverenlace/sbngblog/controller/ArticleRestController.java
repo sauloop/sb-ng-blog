@@ -27,7 +27,7 @@ public class ArticleRestController {
     @GetMapping
     public ResponseEntity<Page<Article>> findAllArticles(@RequestParam(defaultValue = "0") int page,
                                                          @RequestParam(name = "categoryId", required = false) Long categoryId) {
-        Pageable pageable = PageRequest.of(page, 2, Sort.by("id").descending());
+        Pageable pageable = PageRequest.of(page, 4, Sort.by("id").descending());
         Page<Article> articles = articleService.findAllArticles(pageable);
         if (categoryId == null) {
             if (articles.isEmpty()) {
