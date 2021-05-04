@@ -5,6 +5,7 @@ import com.inverenlace.sbngblog.entity.Article;
 import com.inverenlace.sbngblog.entity.Category;
 import com.inverenlace.sbngblog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,10 +25,13 @@ public class ArticleRestController {
     @Autowired
     private ArticleService articleService;
 
+    @Value("${pagesize}")
+    private int pagesize;
+
     @GetMapping
     public ResponseEntity<Page<Article>> findAllArticles(@RequestParam(defaultValue = "0") int page,
                                                          @RequestParam(name = "categoryId", required = false) Long categoryId) {
-        Pageable pageable = PageRequest.of(page, 4, Sort.by("id").descending());
+        Pageable pageable = PageRequest.of(page, this.pagesize, Sort.by("id").descending());
         Page<Article> articles = articleService.findAllArticles(pageable);
         if (categoryId == null) {
             if (articles.isEmpty()) {
@@ -35,7 +39,7 @@ public class ArticleRestController {
                 return ResponseEntity.ok(articles);
             }
         } else {
-            pageable = PageRequest.of(page, 2, Sort.by("id").descending());
+            pageable = PageRequest.of(page, this.pagesize, Sort.by("id").descending());
             articles = articleService.findByCategory(Category.builder().id(categoryId).build(), pageable);
             if (articles.isEmpty()) {
 //                return ResponseEntity.notFound().build();
