@@ -25,7 +25,7 @@ import org.springframework.http.HttpMethod;
 public class MainSecurity extends WebSecurityConfigurerAdapter {
 
     String[] resources = new String[]{"/", "/assets/**", "/resources/**", "/static/**", "/include/**", "/css/**",
-            "/icons/**", "/img/**", "/js/**", "/layer/**", "/pdf/**", "/inline.**", "/resources/static/**/*", "/favicon.ico"};
+            "/icons/**", "/img/**", "/js/**", "/layer/**", "/pdf/**", "/file/**", "/inline.**", "/resources/static/**/*", "/favicon.ico"};
 
     @Autowired
     UserDetailsServiceImpl userDetailsService;
