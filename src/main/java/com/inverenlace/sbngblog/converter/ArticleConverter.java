@@ -13,7 +13,12 @@ public class ArticleConverter {
         ArticleDto articleDto = new ArticleDto();
         articleDto.id = article.getId();
         articleDto.title = article.getTitle();
-        articleDto.date = article.getDate().toString();
+        if (article.getDate() != null) {
+            articleDto.date = article.getDate().toString();
+        } else {
+            LocalDate dateNow = LocalDate.now();
+            articleDto.date = dateNow.toString();
+        }
         articleDto.content = article.getContent();
         articleDto.link = article.getLink();
         articleDto.category = article.getCategory().getId();
