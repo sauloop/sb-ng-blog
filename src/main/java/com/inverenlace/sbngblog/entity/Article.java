@@ -9,12 +9,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-//import javax.validation.constraints.NotEmpty;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-//import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Builder
@@ -38,12 +35,10 @@ public class Article implements Serializable {
     @Column
     private LocalDate date;
 
-    //    @NotEmpty(message = "El artículo debe tener un contenido")
     @Column(length = 512)
     @Lob
     private String content;
 
-    //    @URL
     @Column
     private String link;
 

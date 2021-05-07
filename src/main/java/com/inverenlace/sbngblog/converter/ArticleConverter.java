@@ -27,7 +27,6 @@ public class ArticleConverter {
         Article article = new Article();
         article.setId(articleDto.id);
         article.setTitle(articleDto.title);
-        // LocalDate.parse("2018-05-07");
         article.setDate(LocalDate.parse(articleDto.date));
         article.setContent(articleDto.content);
         article.setLink(articleDto.link);
