@@ -7,13 +7,11 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
-//import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-//import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Builder
@@ -34,12 +32,13 @@ public class Article implements Serializable {
     @NotBlank(message = "El artículo debe tener un título")
     private String title;
 
-    //    @NotEmpty(message = "El artículo debe tener un contenido")
+    @Column
+    private LocalDate date;
+
     @Column(length = 512)
     @Lob
     private String content;
 
-    //    @URL
     @Column
     private String link;
 
