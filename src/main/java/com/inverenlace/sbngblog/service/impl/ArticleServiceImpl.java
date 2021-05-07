@@ -19,6 +19,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Service
 @Transactional
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
@@ -49,6 +52,10 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleDto saveArticle(ArticleDto articleDto) {
         ArticleDto savedArticleDto = null;
         try {
+            if (articleDto.date.equals("new")) {
+                LocalDate dateNow = LocalDate.now();
+                articleDto.date = dateNow.toString();
+            }
             Article article = articleRepository.save(ArticleConverter.articleDtoToArticle(articleDto));
             savedArticleDto = ArticleConverter.articleToArticleDto(article);
         } catch (Exception e) {
@@ -64,9 +71,11 @@ public class ArticleServiceImpl implements ArticleService {
         try {
             if (currentArticleDto != null) {
                 currentArticleDto.title = articleDto.title;
+                currentArticleDto.category = articleDto.category;
+                currentArticleDto.date = articleDto.date;
                 currentArticleDto.content = articleDto.content;
                 currentArticleDto.link = articleDto.link;
-                currentArticleDto.category = articleDto.category;
+
 
                 updatedArticleDto = this.saveArticle(currentArticleDto);
             }

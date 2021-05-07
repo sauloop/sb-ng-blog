@@ -4,6 +4,8 @@ import com.inverenlace.sbngblog.dto.ArticleDto;
 import com.inverenlace.sbngblog.entity.Article;
 import com.inverenlace.sbngblog.entity.Category;
 
+import java.time.LocalDate;
+
 public class ArticleConverter {
 
     // Parsing from Article to ArticleDto
@@ -11,7 +13,7 @@ public class ArticleConverter {
         ArticleDto articleDto = new ArticleDto();
         articleDto.id = article.getId();
         articleDto.title = article.getTitle();
-        articleDto.date = article.getDate();
+        articleDto.date = article.getDate().toString();
         articleDto.content = article.getContent();
         articleDto.link = article.getLink();
         articleDto.category = article.getCategory().getId();
@@ -25,7 +27,8 @@ public class ArticleConverter {
         Article article = new Article();
         article.setId(articleDto.id);
         article.setTitle(articleDto.title);
-        article.setDate(articleDto.date);
+        // LocalDate.parse("2018-05-07");
+        article.setDate(LocalDate.parse(articleDto.date));
         article.setContent(articleDto.content);
         article.setLink(articleDto.link);
         article.setCategory(Category.builder().id(articleDto.category).build());

@@ -7,7 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 //import javax.validation.constraints.NotEmpty;
 
@@ -36,7 +36,7 @@ public class Article implements Serializable {
     private String title;
 
     @Column
-    private Date date;
+    private LocalDate date;
 
     //    @NotEmpty(message = "El artículo debe tener un contenido")
     @Column(length = 512)
