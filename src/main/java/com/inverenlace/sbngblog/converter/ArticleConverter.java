@@ -11,6 +11,7 @@ public class ArticleConverter {
         ArticleDto articleDto = new ArticleDto();
         articleDto.id = article.getId();
         articleDto.title = article.getTitle();
+        articleDto.date = article.getDate();
         articleDto.content = article.getContent();
         articleDto.link = article.getLink();
         articleDto.category = article.getCategory().getId();
@@ -24,6 +25,7 @@ public class ArticleConverter {
         Article article = new Article();
         article.setId(articleDto.id);
         article.setTitle(articleDto.title);
+        article.setDate(articleDto.date);
         article.setContent(articleDto.content);
         article.setLink(articleDto.link);
         article.setCategory(Category.builder().id(articleDto.category).build());
