@@ -58,28 +58,6 @@ public class ArticleRestController {
         return responseEntity;
     }
 
-
-//    @GetMapping
-//    public ResponseEntity<Page<Article>> findAllArticles(@RequestParam(defaultValue = "0") int page,
-//                                                         @RequestParam(name = "categoryId", required = false) Long categoryId) {
-//        Pageable pageable = PageRequest.of(page, this.pagesize, Sort.by("id").descending());
-//        Page<Article> articles = articleService.findAllArticles(pageable);
-//        if (categoryId == null) {
-//            if (articles.isEmpty()) {
-//                return ResponseEntity.noContent().build();
-//                return ResponseEntity.ok(articles);
-//            }
-//        } else {
-//            pageable = PageRequest.of(page, this.pagesize, Sort.by("id").descending());
-//            articles = articleService.findByCategory(Category.builder().id(categoryId).build(), pageable);
-//            if (articles.isEmpty()) {
-//                return ResponseEntity.notFound().build();
-//                return ResponseEntity.ok(articles);
-//            }
-//        }
-//        return ResponseEntity.ok(articles);
-//    }
-
     @GetMapping(value = "/{id}")
     public ResponseEntity<ArticleDto> findArticleDtoById(@PathVariable Long id) {
         ArticleDto articleDto = null;
