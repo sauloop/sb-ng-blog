@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-// @JsonInclude annotation ensures that only non null values are sent in the response.
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public final class ResponseDto {
 
